@@ -816,6 +816,39 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> © Af
     </footer>
     <!--================ End footer Area  =================-->
 
+    <script>
+      // La date de fin du compte à rebours (à ajuster selon vos besoins)
+      var countdownDate = new Date("2023-11-06 00:00:00").getTime();
+    
+      // Fonction pour mettre à jour le compte à rebours toutes les 1 seconde
+      var x = setInterval(function() {
+        // Obtenir la date et l'heure actuelles
+        var now = new Date().getTime();
+    
+        // Calculer la différence entre la date de fin et la date actuelle
+        var distance = countdownDate - now;
+    
+        // Calculer les jours, les heures, les minutes et les secondes restants
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+        // Mettre à jour les éléments HTML avec les valeurs calculées
+        document.querySelector(".days").innerHTML = days;
+        document.querySelector(".hours").innerHTML = hours;
+        document.querySelector(".minutes").innerHTML = minutes;
+        document.querySelector(".seconds").innerHTML = seconds;
+    
+        // Si le compte à rebours est terminé, afficher un message
+        if (distance < 0) {
+          clearInterval(x); // Arrêter le compte à rebours
+          document.getElementById("clockdiv").innerHTML = "Le compte à rebours est terminé!";
+        }
+      }, 1000); // Mettre à jour le compte à rebours toutes les 1 seconde
+    </script>
+    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.2.1.min.js"></script>
